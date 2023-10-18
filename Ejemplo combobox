@@ -1,0 +1,29 @@
+import tkinter as tk
+from tkinter import ttk
+
+# Funcion que se ejecuta cuando se selecciona un elemento en ComboBox
+def on_select(event):
+    selected_item = combo_box.get()
+    label.config(text=f"Seleccionaste: {selected_item}")
+
+# Crear la ventana principal
+ventana = tk.Tk()
+ventana.title("Ejemplo ComboBox")
+
+# Lista de opciones para ComboBox
+opciones = ["Opcion 1", "Opcion 2", "Opcion 3", "Opcion 4", "Opcion 5"]
+
+# Crear un ComboBox y configurar las opciones
+combo_box = ttk.Combobox(ventana, values=opciones)
+combo_box.pack(padx=20, pady=20)
+combo_box.set("Seleccione una opcion")
+
+# Etiqueta para mostrar el elemento seleccionado
+label = tk.Label(ventana, text="")
+label.pack(pady=10)
+
+# Asociar la funcion on_select al evento de seleccion en ComboBox
+combo_box.bind("<<ComboboxSelected>>", on_select)
+
+# Iniciar el bucle principal
+ventana.mainloop()
